@@ -1,146 +1,77 @@
-📊 Portal de Notícias - Jornalizando Dados
-Portal dinâmico para curadoria, rastreamento, análise e publicação de notícias sobre Análise de Dados, Marketing Digital, Tecnologia e Inovação, desenvolvido em PHP com dashboard visual e painel admin.
-Automatize sua gestão de notícias com SEO, filtros avançados, coleta automática e painel moderno!
+Descrição do Projeto: Portal de Notícias com Painel Admin em PHP
+Resumo do Projeto
+Este projeto consiste em um portal de notícias totalmente dinâmico, desenvolvido em PHP e MySQL, focado em temas de Análise de Dados, Marketing Digital, Tecnologia e Inovação.
+O objetivo foi criar uma plataforma onde todo o fluxo – da coleta automática das notícias até a aprovação, edição e publicação – pudesse ser feito de forma simples, visual e automatizada, com painel de controle, filtros inteligentes, dashboard visual e recursos de SEO.
 
-🚀 Funcionalidades Principais
-Coleta Automática de Notícias (Crawler de feeds RSS e integração com Google Custom Search para imagens)
+Como foi o desenvolvimento
+1. Levantamento dos requisitos
 
-Painel Admin Completo
+O sistema deveria rastrear automaticamente diversas fontes de notícias (via RSS), coletando títulos, descrições, links, datas e imagens.
 
-Dashboard visual com indicadores (notícias rastreadas, aprovadas, excluídas, pendentes, etc.)
+Necessidade de um painel admin para curadoria (aprovar, editar, excluir notícias, etc.).
 
-Aprovação/desaprovação e exclusão em lote
+URLs amigáveis, dashboard com indicadores e busca/filtro avançado.
 
-Edição rápida (inline ou modal) de notícias (título, descrição, imagem)
+2. Arquitetura e organização
 
-Pré-visualização antes de publicar
+Organização das notícias em categorias e subpastas (ex: /blog/analise-de-dados, /blog/marketing-digital).
 
-Histórico de ações (log por usuário, aprovação, exclusão, edição)
+Estrutura modular com arquivos PHP reutilizáveis (navbar, footer, painel admin, scripts de coleta, API de notícias).
 
-Filtros avançados: busca por fonte, palavra-chave, data, status, presença de imagem
+3. Coleta de notícias
 
-Dashboard de gráficos (Fontes, keywords, evolução)
+Foi implementado um crawler RSS em PHP, que lê diariamente feeds configurados e armazena as notícias no banco de dados.
 
-Coleta manual (botão "Rodar Coleta Agora")
+Quando a notícia não possui imagem, o sistema busca uma imagem correlacionada usando a API do Google Custom Search.
 
-Publicação de Notícias
+O painel admin permite rodar a coleta manualmente (“Rodar Coleta Agora”).
 
-Interface moderna (Tailwind CSS)
+4. Painel Administrativo
 
-Top News, Notícias Recentes e Populares automáticos
+Desenvolvido um painel administrativo responsivo, com login, lista de notícias rastreadas e filtros por status, fonte, palavra-chave e data.
 
-Suporte a imagens (original do RSS, fallback do Google ou placeholder)
+É possível aprovar, desaprovar, excluir e editar notícias em lote, além de editar rapidamente qualquer campo via modal.
 
-SEO-friendly URLs (via .htaccess)
+O sistema registra logs de aprovações, edições e exclusões para histórico.
 
-Scroll infinito e carregamento rápido
+5. Exibição e front-end
 
-Arquitetura modular
+A interface principal utiliza Tailwind CSS e componentes em PHP para facilitar a manutenção visual.
 
-Navbar e componentes reutilizáveis em PHP (include)
+As notícias são exibidas separadas em “Top News”, “Notícias Recentes” e “Populares”, todas geradas dinamicamente.
 
-Separação entre frontend (usuário) e backend (admin)
+Imagens são exibidas automaticamente, e quando não há imagem é utilizado um placeholder.
 
-🛠 Tecnologias Utilizadas
-PHP (Procedural e modular)
+Implementado scroll infinito para as notícias recentes.
 
-MySQL (armazenamento de notícias, usuários, logs)
+6. URLs Amigáveis e Estrutura de Pastas
 
-Tailwind CSS + CSS customizado
+Utilizado .htaccess para criar URLs amigáveis e mover os blogs para subpastas de categoria.
 
-JavaScript (fetch API, AJAX, modais, scroll infinito)
+Cada categoria tem sua própria página índice, facilitando a organização e navegação do site.
 
-Google Custom Search API (autoimagem para notícias sem thumbnail)
+7. Indicadores e Dashboard
 
-.htaccess (URLs amigáveis e roteamento)
+O painel exibe indicadores de total de notícias, aprovadas, pendentes, excluídas e permite visualização de gráficos de evolução das notícias e ranking de fontes.
 
-Admin painel customizado (sem frameworks pesados)
+Diferenciais
+Automação da curadoria: autoaprovação de notícias por palavra-chave, coleta automatizada e manual.
 
-📁 Estrutura de Pastas (Sugerida)
-bash
-Copiar
-Editar
-/public_html
-  /noticias
-    admin_painel.php
-    admin_login.php
-    coletar_noticias.php
-    api_noticias.php
-    custom.css
-    ...
-  /blog
-    /analise-de-dados
-    /marketing-digital
-    /tecnologia-inovacao
-    /jornalismo-de-dados
-      Blog1.html ...
-    index.php
-  /componentes
-    navbar.php
-    footer.php
-  .htaccess
-  README.md
-⚡️ Como usar
-1. Clonar e Configurar o Projeto
-bash
-Copiar
-Editar
-git clone https://github.com/seu-usuario/seu-repo.git
-2. Configurar Banco de Dados
-Crie o banco MySQL.
+Gestão visual: dashboard com indicadores e gráficos, painel amigável, filtros avançados.
 
-Execute o script de criação das tabelas:
+Modularidade: componentes reutilizáveis em PHP, fácil manutenção, URLs SEO-friendly.
 
-noticias
+Registro de histórico: log de ações de cada usuário/admin para rastreabilidade.
 
-noticias_excluidas
+Integração com Google Images: para enriquecer visualmente notícias sem imagem.
 
-usuarios
+Principais aprendizados
+Estruturar projetos PHP com visão de futuro (modularidade, reuso).
 
-log_acoes (para histórico)
+Automatizar coleta e curadoria, reduzindo o esforço manual.
 
-3. Configurar credenciais
-Edite os arquivos PHP com as credenciais do seu banco:
+A importância do SEO e da organização de URLs para portais de conteúdo.
 
-php
-Copiar
-Editar
-$host = 'localhost';
-$user = 'usuario';
-$pass = 'senha';
-$dbname = 'banco';
-4. Configurar Google Custom Search (opcional para imagens)
-Criar API KEY
+Adoção de painéis visuais para facilitar a tomada de decisão do administrador.
 
-Criar mecanismo CX
-
-Adicione suas chaves no coletar_noticias.php.
-
-5. Ajustar URLs amigáveis
-Edite o arquivo .htaccess (veja exemplos de rewrite no projeto).
-
-6. Acessar o Painel Admin
-/noticias/admin_login.php
-
-Faça login, aprove as notícias, edite, exclua ou rode a coleta.
-
-7. Personalizar Navbar/Componentes
-Edite /componentes/navbar.php para manter um header global em todas as páginas.
-
-🧩 Funcionalidades extras e Diferenciais
-Curadoria semi-automatizada (auto-aprovação por keyword)
-
-Logs e rastreabilidade (saiba quem editou/aprovou/excluiu cada notícia)
-
-Modularidade e fácil manutenção
-
-Dashboard visual pronto para BI (evolução, fontes, etc)
-
-Pronto para escalar (mais fontes, mais filtros, multiusuário)
-
-📝 Contribua!
-Pull requests são bem-vindos. Para mudanças grandes, abra uma issue primeiro para discutir o que você gostaria de mudar.
-
-📄 Licença
-MIT
-
+Esse projeto demonstra como é possível unir automação, curadoria e experiência visual para criar um portal de notícias escalável, moderno e fácil de gerenciar.
